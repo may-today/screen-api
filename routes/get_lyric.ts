@@ -16,5 +16,22 @@ export default eventHandler(async (event) => {
   };
   const response = await fetch(url + "?" + new URLSearchParams(params));
   const rawData = await response.json();
-  return rawData;
+  return parseRawData(rawData);
 });
+
+const parseRawData = (data: RequestResult) => {
+  if (data.error) {
+    return data;
+  }
+  const lines = data.lines?.map((line) => {
+    const { startTimeMs, words } = line;
+    return {
+      time: Math.floor(parseInt(startTimeMs) / 1000),
+      text: words,
+    };
+  });
+  return {
+    syncType: data.syncType,
+    lines,
+  };
+};
