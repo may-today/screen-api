@@ -1,42 +1,7 @@
-# Nitro Minimal Starter
+# MayScreen Backend API
 
-Look at the [Nitro documentation](https://nitro.unjs.io/) to learn more.
+- Song search by [Spotify Web API](https://developer.spotify.com/documentation/web-api)
+- Lyric fetch
+- Not included: Peer connection server because Vercel (Netlify) doesn't support long-running WebSocket connections.
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# yarn
-yarn install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on <http://localhost:3000>
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nitro.unjs.io/deploy) for more information.
+Powered by [Nitro](https://nitro.unjs.io/).

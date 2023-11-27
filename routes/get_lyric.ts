@@ -10,7 +10,7 @@ interface RequestResult {
 
 export default eventHandler(async (event) => {
   const { trackid } = getQuery(event);
-  const url = "https://spotify-lyric-api-984e7b4face0.herokuapp.com/";
+  const url = process.env.LYRIC_API_HOST;
   const params = {
     trackid: trackid as string,
   };
