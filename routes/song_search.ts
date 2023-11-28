@@ -69,6 +69,7 @@ const parseRawData = (data: RequestResult) => {
         const { id, name, uri } = artist;
         return { id, name, uri };
       }),
+      artists_str: artists.map((artist) => artist.name).join(", "),
     };
   });
   return { tracks };

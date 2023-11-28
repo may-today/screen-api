@@ -26,7 +26,7 @@ const parseRawData = (data: RequestResult) => {
   const lines = data.lines?.map((line) => {
     const { startTimeMs, words } = line;
     return {
-      time: Math.floor(parseInt(startTimeMs) / 1000),
+      time: data.syncType === 'UNSYNCED' ? -1 : Math.floor(parseInt(startTimeMs) / 1000),
       text: words,
     };
   });
