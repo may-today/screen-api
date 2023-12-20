@@ -1,3 +1,5 @@
+import { trad2simple } from '../utils/chinese'
+
 interface RequestResult {
   error?: {
     status: number;
@@ -55,21 +57,25 @@ const parseRawData = (data: RequestResult) => {
     const { id, name, uri, album, artists } = track;
     return {
       id,
-      name,
+      name: trad2simple(name),
       uri,
       duration: Math.floor(track.duration_ms / 1000),
       album: {
         id: album.id,
-        name: album.name,
+        name: trad2simple(album.name),
         release_date: album.release_date,
         uri: album.uri,
         image: album.images[0].url,
       },
       artists: artists.map((artist) => {
         const { id, name, uri } = artist;
-        return { id, name, uri };
+        return {
+          id,
+          name: trad2simple(name),
+          uri
+        };
       }),
-      artists_str: artists.map((artist) => artist.name).join(", "),
+      artists_str: artists.map((artist) => trad2simple(artist.name)).join(', '),
     };
   });
   return { tracks };
