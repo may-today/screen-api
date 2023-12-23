@@ -33,6 +33,7 @@ interface RequestResult {
 
 export default eventHandler(async (event) => {
   const { q } = getQuery(event);
+  console.log(`search: ${q}`)
   const url = "https://api.spotify.com/v1/search";
   const token = await useToken();
   const headers = {
