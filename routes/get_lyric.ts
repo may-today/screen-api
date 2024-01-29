@@ -1,3 +1,5 @@
+import { trad2simple } from '../utils/chinese'
+
 interface RequestResult {
   error: boolean
   message?: string
@@ -30,7 +32,7 @@ const parseRawData = (data: RequestResult) => {
         data.syncType === 'UNSYNCED'
           ? -1
           : Math.floor(parseInt(startTimeMs) / 1000),
-      text: words,
+      text: trad2simple(words),
     }
   })
   return {
